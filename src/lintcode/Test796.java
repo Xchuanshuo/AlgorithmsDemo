@@ -9,7 +9,7 @@ import java.util.Set;
  * @author Legend
  * @data by on 18-8-13.
  * @description open-the-lock
- * idea:
+ * idea:nn
  *      用一个Set保存deadends, 以及访问过的锁(当作死锁处理，无需浪费多余的空间), bfs
  *      一共4个字符，每个字符有两种改变方案
  */
