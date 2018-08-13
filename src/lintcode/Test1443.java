@@ -6,9 +6,15 @@ import java.util.Map;
 /**
  * @author Legend
  * @data by on 18-6-9.
- * @description
+ * @description longest-ab-substring
+ * idea:
+ *      用res表示AB数量差为0时字符串得长度
+ *      用一个Map 保存每次遍历时的AB数量差对应的索引
+ *      这样 当遍历到后面的字符时 数量差已经存在 就说明
+ *      中间有AB数量相等 就计算当前索引和之前保存索引的差值
+ *      结果就是这一段内AB子串的长度 然后去与res比较取较大值
  */
-public class Test1 {
+public class Test1443 {
 
     public int getAns1(String s) {
         if (null == s || s.length() == 0) {
@@ -87,8 +93,8 @@ public class Test1 {
     }
 
     public static void main(String[] args) {
-        Test1 test1 = new Test1();
-        System.out.println(test1.getAns("ABABAB"));
+        Test1443 test1 = new Test1443();
+        System.out.println(test1.getAns("AAABABAB"));
     }
 
 }
