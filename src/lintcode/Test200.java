@@ -4,6 +4,9 @@ package lintcode;
  * @author Legend
  * @data by on 18-6-14.
  * @description
+ * idea:
+ *      Manacher算法 可以看看博客链接
+ *      http://blog.cspojie.cn/2018/06/16/Manacher%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/#more
  */
 public class Test200 {
 
