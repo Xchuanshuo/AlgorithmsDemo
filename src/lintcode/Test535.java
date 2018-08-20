@@ -4,6 +4,7 @@ package lintcode;
  * @author Legend
  * @data by on 18-8-8.
  * @description house-robber-iii
+ *
  */
 public class Test535 {
 
