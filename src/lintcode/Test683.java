@@ -25,10 +25,11 @@ public class Test683 {
         for (String str: dict) {
             newDict.add(str.toLowerCase());
         }
+        int maxlen = getMaxLength(newDict);
         int[] dp = new int[m+1];
         dp[0] = 1;
         for (int i=1;i<=m;i++) {
-            for (int j=1;j<=i;j++) {
+            for (int j=1;j<=i&&j<=maxlen;j++) {
                 if (dp[i-j] == 0) continue;
                 String cur = s.substring(i-j, i);
                 if (newDict.contains(cur)) {
@@ -37,6 +38,14 @@ public class Test683 {
             }
         }
         return dp[m];
+    }
+
+    private int getMaxLength(Set<String> dict) {
+        int max = 0;
+        for (String str : dict) {
+            max = Math.max(max, str.length());
+        }
+        return max;
     }
 
     public int wordBreak3two(String s, Set<String> dict) {
