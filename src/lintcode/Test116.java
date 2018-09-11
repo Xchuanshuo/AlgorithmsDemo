@@ -6,7 +6,7 @@ package lintcode;
  * @description jump-game
  * idea:
  *      贪心算法 每次选取能跳跃到的最大值 如果i比最大值还大
- *      说明 当前跳到了为最多步数为0的位置, 就无法跳出去了
+ *      说明 当前跳到了最多步数为0的位置, 就无法跳出去了
  */
 public class Test116 {
 
