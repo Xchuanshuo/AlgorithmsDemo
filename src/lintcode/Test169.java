@@ -8,7 +8,9 @@ import java.util.List;
  * @data by on 18-9-17.
  * @description tower-of-hanoi
  * idea:
- *      经典的问题 回溯
+ *      经典的问题 n个物体 把前面n-1物体当作一个整体 宏观过程就是先把n-1个物体移动到第二
+ *      号柱子上 然后把一号柱子的第n个物体移动到第三号柱子上 最后就是把2号柱子上面的移动
+ *      到第三号柱子上
  */
 public class Test169 {
 
