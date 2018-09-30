@@ -1,5 +1,8 @@
 package lintcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Legend
  * @data by on 18-9-29.
