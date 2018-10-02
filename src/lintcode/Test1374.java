@@ -9,6 +9,8 @@ import java.util.Set;
  * @author Legend
  * @data by on 18-10-1.
  * @description shortest-distance-in-3d-space
+ * idea:
+ *      bfs 过程中把障碍物当作访问过的点进行过滤即可
  */
 public class Test1374 {
 
@@ -17,7 +19,7 @@ public class Test1374 {
     private int n = 0;
     public int shortestDistance(int N, int[][] barriers) {
         // Write your code here
-        if (N<=1) return -1;
+        if (N<=0) return -1;
         this.n = N;
         int step = 0;
         Queue<Point> queue = new LinkedList<>();
@@ -30,20 +32,23 @@ public class Test1374 {
         queue.add(start);
         visited.add(start.toString());
         while (!queue.isEmpty()) {
-            step++;
-            Point point = queue.poll();
-            for (int i=0;i<6;i++) {
-                int newX = point.x + pos[i][0];
-                int newY = point.y + pos[i][1];
-                int newZ = point.z + pos[i][2];
-                if (!inBound(newX, newY, newZ)) continue;
-                if (isEnd(newX, newY, newZ)) return step;
-                Point newPoint = new Point(newX, newY, newZ);
-                if (!visited.contains(newPoint.toString())) {
-                    queue.offer(newPoint);
-                    visited.add(newPoint.toString());
+            int len = queue.size();
+            for (int j=0;j<len;j++) {
+                Point point = queue.poll();
+                if (isEnd(point.x, point.y, point.z)) return step;
+                for (int i=0;i<6;i++) {
+                    int newX = point.x + pos[i][0];
+                    int newY = point.y + pos[i][1];
+                    int newZ = point.z + pos[i][2];
+                    if (!inBound(newX, newY, newZ)) continue;
+                    Point newPoint = new Point(newX, newY, newZ);
+                    if (!visited.contains(newPoint.toString())) {
+                        queue.offer(newPoint);
+                        visited.add(newPoint.toString());
+                    }
                 }
             }
+            step++;
         }
         return -1;
     }
@@ -62,7 +67,7 @@ public class Test1374 {
         return true;
     }
 
-    static class Point {
+    class Point {
         int x, y, z;
         Point(int x, int y, int z) {
             this.x = x;
@@ -74,14 +79,5 @@ public class Test1374 {
         public String toString() {
             return ""+x+y+z;
         }
-    }
-
-    public static void main(String[] args) {
-        Point point1 = new Point(0,1,2);
-        Point point2 = new Point(0,1,2);
-        Set<Point> set = new HashSet<>();
-        set.add(point1);
-        set.add(point2);
-        System.out.println(set.size());
     }
 }

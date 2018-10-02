@@ -8,6 +8,8 @@ import java.util.Queue;
  * @author Legend
  * @data by on 18-8-2.
  * @description build-post-office-ii
+ * idea:
+ *      反向bfs
  */
 public class Test573 {
 

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Legend
  * @data by on 18-6-13.
- * @description
+ * @description best-meeting-point
  */
 public class Test912 {
 
