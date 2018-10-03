@@ -1,4 +1,4 @@
-package graph.algorithm;
+package graph.algorithm.shortestpath;
 
 import graph.base.Edge;
 import graph.base.IndexMinHeap;

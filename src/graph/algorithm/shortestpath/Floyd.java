@@ -1,4 +1,4 @@
-package graph.algorithm;
+package graph.algorithm.shortestpath;
 
 /**
  * @author Legend

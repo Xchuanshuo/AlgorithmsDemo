@@ -1,6 +1,6 @@
-package graph.test;
+package graph.algorithm.shortestpath.test;
 
-import graph.algorithm.DijkstraSP;
+import graph.algorithm.shortestpath.DijkstraSP;
 import graph.base.ReadWeightedGraph;
 import graph.base.SparseWeightedGraph;
 

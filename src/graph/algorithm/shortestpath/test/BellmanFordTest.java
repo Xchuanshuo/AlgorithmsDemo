@@ -1,7 +1,6 @@
-package graph.test;
+package graph.algorithm.shortestpath.test;
 
-import graph.algorithm.BaseQueueBFSP;
-import graph.algorithm.BellmanFordSP;
+import graph.algorithm.shortestpath.BaseQueueBFSP;
 import graph.base.ReadWeightedGraph;
 import graph.base.SparseWeightedGraph;
 

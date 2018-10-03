@@ -1,4 +1,4 @@
-package graph;
+package graph.base;
 
 /**
  * 加权有向边
