@@ -2,8 +2,6 @@ package lintcode;
 
 import tree.segmenttree.SegmentTree;
 
-import java.util.Arrays;
-
 /**
  * @author Legend
  * @data by on 18-6-23.
