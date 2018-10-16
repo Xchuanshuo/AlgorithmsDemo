@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author Legend
  * @data by on 18-6-16.
- * @description
+ * @description continuous-subarray-sum
  */
 public class Test402 {
 
