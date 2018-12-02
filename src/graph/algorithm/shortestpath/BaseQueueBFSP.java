@@ -18,7 +18,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class BaseQueueBFSP<Weight extends Number & Comparable> {
 
-
     private WeightGraph G;
     private int s;
     private Number[] distTo;

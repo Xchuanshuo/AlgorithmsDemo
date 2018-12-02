@@ -107,7 +107,7 @@ public class IndexMinHeap<Item extends Comparable> {
     }
 
     // 看索引i所在的位置是否存在元素
-    public boolean contain( int i ){
+    public boolean contain(int i){
         assert  i + 1 >= 1 && i + 1 <= capacity;
         return reverse[i+1] != 0;
     }
