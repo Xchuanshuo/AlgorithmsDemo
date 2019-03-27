@@ -8,4 +8,12 @@ public class ListNode {
        this.val = val;
        this.next = null;
     }
+
+    static void nextNode(ListNode head) {
+        head = head.next;
+    }
+
+    static void changeVal(ListNode head) {
+        head.val = 10;
+    }
 }

@@ -61,4 +61,13 @@ public class Test {
         System.out.println(res.length);
         System.out.println(res[0]);
     }
+
+//    public static void main(String[] args) {
+//        ListNode one = new ListNode(5);
+//        one.next = new ListNode(10);
+//        ListNode.nextNode(one);
+//        System.out.println(one.val);
+//        ListNode.changeVal(one);
+//        System.out.println(one.val);
+//    }
 }
