@@ -41,4 +41,5 @@ public class Test1562 {
     private int dis(int x, int y) {
         return x*x + y*y;
     }
+
 }
