@@ -2,6 +2,8 @@ package tree.huffman;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
 /**
@@ -42,24 +44,24 @@ public class Compress {
         // 生成Huffman树
         writeTrie(root);
         // 输出未压缩时的长度
-        System.out.println(input.length * 8);
+        System.out.println(input.length * 2);
         // 合并字符对应的Huffman编码
         StringBuilder builder = new StringBuilder();
         for (int i = 0;i < input.length;i++) {
             String code = st[input[i]];
             if (code == null) continue;
             builder.append(code);
-            System.out.print(input[i] + ": ");
-            for (int j = 0;j < code.length();j++) {
-                if (code.charAt(j) == '0') {
-                    System.out.print(0);
-                } else if (code.charAt(j) == '1') {
-                    System.out.print(1);
-                } else {
-                    throw new IllegalStateException("Illegal state");
-                }
-            }
-            System.out.println();
+//            System.out.print(input[i] + ": ");
+//            for (int j = 0;j < code.length();j++) {
+//                if (code.charAt(j) == '0') {
+//                    System.out.print(0);
+//                } else if (code.charAt(j) == '1') {
+//                    System.out.print(1);
+//                } else {
+//                    throw new IllegalStateException("Illegal state");
+//                }
+//            }
+//            System.out.println();
         }
         compressedStr = builder.toString();
 
@@ -69,6 +71,7 @@ public class Compress {
         //     4.补的位数(1字节) 5.编码后的串
         byte[] fileNameBytes = ByteUtil.getFileNameBytes(fileName);
         byte[] treeStrBytes = treeStr.getBytes();
+        System.out.println(treeStr);
         byte[] treeStrLenBytes = ByteUtil.getTreeLengthBytes(treeStrBytes.length);
         byte[] reminderByte = new byte[]{ByteUtil.getReminder(compressedStr)};
         byte[] compressedStrBytes = ByteUtil.binStrToBytes(compressedStr);
@@ -123,7 +126,8 @@ public class Compress {
     }
 
     public static void main(String[] args) throws IOException {
-        Compress compress = new Compress("/home/legend/Projects/IdeaProjects/AlgorithmsDemo/pride-and-prejudice.txt");
+        String path = "/home/legend/Projects/IdeaProjects/AlgorithmsDemo/src/tree/huffman/Computer Networking A Top-Down Approach (7th Edition).pdf";
+        Compress compress = new Compress(path);
         compress.compress();
     }
 }

@@ -13,8 +13,19 @@ public class ByteUtil {
     public static final int TREE_LENGTH_SIZE = 32;
     public static final int TREE_CODE_START_INDEX = 96;
 
+    /**
+     * 注意 如果直接把01串进行存储的话 默认每个字符是char(2byte)
+     * 这样就会导致存储编码后的字符串需要的空间比原本的字符串都要高很多
+     * 将编码后的01串使用字节来存储 1 byte = 8 bit
+     * 但Java里面byte类型首位为符号位 所以1byte的数值范围为-128~127
+     * 但有可能出现连续8个字符为1的串 这样装换成1byte的时候会出错 所以我这里是
+     * 7 bit一组当作1byte存储
+     * @param binStr
+     * @return
+     */
     public static byte[] binStrToBytes(String binStr) {
         int segment = binStr.length()/7;
+        // 把结尾不满足的位数补0 方便进行存储
         int reminder = getReminder(binStr);
         if (reminder != 0) segment++;
         for (int i = 0;i < reminder;i++) {

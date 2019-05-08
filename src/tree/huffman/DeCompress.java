@@ -1,6 +1,8 @@
 package tree.huffman;
 
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,7 +106,8 @@ public class DeCompress {
     }
 
     public static void main(String[] args) throws IOException {
-        DeCompress deCompress = new DeCompress("/home/legend/Projects/IdeaProjects/AlgorithmsDemo/pride-and-prejudice.hf");
+        String path = "/home/legend/Projects/IdeaProjects/AlgorithmsDemo/src/tree/huffman/abra.txt";
+        DeCompress deCompress = new DeCompress(path);
         deCompress.decompress();
     }
 }
