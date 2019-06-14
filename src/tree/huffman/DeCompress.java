@@ -1,12 +1,13 @@
 package tree.huffman;
 
+import com.alibaba.fastjson.JSON;
+import tree.heap.Array;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static tree.huffman.ByteUtil.FILE_NAME_SIZE;
 import static tree.huffman.ByteUtil.TREE_CODE_START_INDEX;
@@ -23,6 +24,7 @@ public class DeCompress {
     private String treeStr;
     private String compressedStr;
     private byte[] bytes;
+    private Map<String, String> encodeMap;
 
     public DeCompress(String filePath) throws IOException {
         File tempFile = new File(filePath);
@@ -36,6 +38,8 @@ public class DeCompress {
         int treeLength = Integer.parseInt(treeLenStr.trim());
         // 根据长度读取树字符串
         this.treeStr = new String(Arrays.copyOfRange(bytes, TREE_CODE_START_INDEX, TREE_CODE_START_INDEX+treeLength), "UTF-8");
+        System.out.println(treeStr);
+        this.encodeMap = JSON.parseObject(treeStr, Map.class);
         System.out.println("读取单词查找树");
 
         // 真正压缩后数据的读取
@@ -93,6 +97,33 @@ public class DeCompress {
         System.out.println("解压缩完成");
     }
 
+    // 解压缩
+    public void decompress1() {
+        System.out.println("开始解压缩....");
+        List<Byte> byteList = new ArrayList<>(1000000);
+        int index = 0;
+        System.out.println(compressedStr.length());
+        int len = compressedStr.length();
+        String temp;
+        for (int i = 1;i <= len;i++) {
+            temp = compressedStr.substring(0, i - index);
+            if (encodeMap.containsKey(temp)) {
+                char c = encodeMap.get(temp).toCharArray()[0];
+                byteList.add((byte) c);
+                compressedStr = compressedStr.substring(i - index);
+                index = i;
+            }
+        }
+        System.out.println("解码完成...开始写入...");
+        String filePrefix = "de_";
+        byte[] result = new byte[byteList.size()];
+        for (int i = 0;i < result.length;i++) {
+            result[i] = byteList.get(i);
+        }
+        FileUtil.writeFile(absPath + filePrefix + fileName, result);
+        System.out.println("解压缩完成");
+    }
+
     // 重键单词查找树
     private Node readTrie() {
         char a = treeStr.charAt(0);
@@ -106,8 +137,8 @@ public class DeCompress {
     }
 
     public static void main(String[] args) throws IOException {
-        String path = "/home/legend/Projects/IdeaProjects/AlgorithmsDemo/src/tree/huffman/abra.txt";
+        String path = "";
         DeCompress deCompress = new DeCompress(path);
-        deCompress.decompress();
+        deCompress.decompress1();
     }
 }

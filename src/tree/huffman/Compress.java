@@ -1,5 +1,7 @@
 package tree.huffman;
 
+import com.alibaba.fastjson.JSON;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -41,16 +43,22 @@ public class Compress {
         // 构建查找表
         String[] st = new String[65555];
         buildCode(st, root, "");
-        // 生成Huffman树
-        writeTrie(root);
+        // 生成字典树
+//        writeTrie(root);
+        // 映射表
+        Map<String, Character> charMap = new HashMap<>();
         // 输出未压缩时的长度
         System.out.println(input.length * 2);
-        // 合并字符对应的Huffman编码
+        // 合并字符对应的Huffman编码        System.out.println(treeStr);
+
         StringBuilder builder = new StringBuilder();
         for (int i = 0;i < input.length;i++) {
             String code = st[input[i]];
             if (code == null) continue;
             builder.append(code);
+            if (!charMap.containsKey(code)) {
+                charMap.put(code, input[i]);
+            }
 //            System.out.print(input[i] + ": ");
 //            for (int j = 0;j < code.length();j++) {
 //                if (code.charAt(j) == '0') {
@@ -63,14 +71,17 @@ public class Compress {
 //            }
 //            System.out.println();
         }
+        String mapStr = JSON.toJSONString(charMap);
+        System.out.println(mapStr);
         compressedStr = builder.toString();
+        System.out.println(compressedStr);
 
         // 压缩 1.元数据包括文件名(64字节)
         //     2.单词查找树长度(32字节)
         //     3.单词查找树字符串
         //     4.补的位数(1字节) 5.编码后的串
         byte[] fileNameBytes = ByteUtil.getFileNameBytes(fileName);
-        byte[] treeStrBytes = treeStr.getBytes();
+        byte[] treeStrBytes = mapStr.getBytes();
         System.out.println(treeStr);
         byte[] treeStrLenBytes = ByteUtil.getTreeLengthBytes(treeStrBytes.length);
         byte[] reminderByte = new byte[]{ByteUtil.getReminder(compressedStr)};
@@ -126,7 +137,7 @@ public class Compress {
     }
 
     public static void main(String[] args) throws IOException {
-        String path = "/home/legend/Projects/IdeaProjects/AlgorithmsDemo/src/tree/huffman/Computer Networking A Top-Down Approach (7th Edition).pdf";
+        String path = "/home/legend/Projects/IdeaProjects/AlgorithmsDemo/pride-and-prejudice.txt";
         Compress compress = new Compress(path);
         compress.compress();
     }
