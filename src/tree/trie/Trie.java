@@ -49,28 +49,45 @@ public class Trie {
         }
     }
 
-    // 查询单词是否在Trie中
+    // Trie树是否包含某个单词
     public boolean contains(String word) {
         Node cur = root;
-        if (findWord(word, cur)) return false;
-        return cur.isWord;
+        Node node = findPrefixNode(word, cur);
+        return  node != null && node.isWord;
     }
 
-    //　查询是否在Trie中有单词以prefix为前缀
-    public boolean isPrefix(String prefix) {
+    // 是否包含某个前缀
+    public boolean containsPrefix(String prefix) {
         Node cur = root;
-        if (findWord(prefix, cur)) return false;
-        return true;
+        return findPrefixNode(prefix, cur) != null;
     }
 
-    private boolean findWord(String prefix, Node cur) {
-        for (int i=0;i<prefix.length();i++) {
+    // 查找前缀
+    private Node findPrefixNode(String prefix, Node cur) {
+        for (int i = 0;i < prefix.length();i++) {
             char c = prefix.charAt(i);
-            if (cur.next.get(c) == null) {
-                return true;
+            if (!cur.next.containsKey(c)) {
+                return null;
             }
             cur = cur.next.get(c);
         }
-        return false;
+        return cur;
+    }
+
+    public static void main(String[] args) {
+        Trie trie = new Trie();
+        trie.add("apple");
+        trie.add("application");
+        trie.add("abort");
+        trie.add("abandon");
+        trie.add("bug");
+        System.out.println(trie.contains("apple"));
+        System.out.println(trie.contains("abort"));
+        System.out.println(trie.contains("application"));
+        System.out.println(trie.containsPrefix("ap"));
+        System.out.println(trie.containsPrefix("aa"));
+        System.out.println(trie.contains("word"));
+        System.out.println(trie.contains("bug"));
+        System.out.println(trie.containsPrefix("b"));
     }
 }

@@ -9,8 +9,8 @@ import java.util.*;
  */
 public class BPlusTree<K extends Comparable<K>, V> {
 
-    public static enum RangePolicy {
-        EXCLUSIVE, INCLUSIVE;
+    public enum RangePolicy {
+        EXCLUSIVE, INCLUSIVE
     }
 
     /**
