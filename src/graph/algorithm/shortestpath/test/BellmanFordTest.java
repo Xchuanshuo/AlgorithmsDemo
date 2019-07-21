@@ -15,8 +15,8 @@ public class BellmanFordTest {
 
     public static void main(String[] args) {
 
-        String fileName = "/home/legend/Projects/IdeaProjects/AlgorithmsDemo/src/graph/largeEWG.txt";
-        int V = 1000000;
+        String fileName = "/home/legend/Projects/IdeaProjects/AlgorithmsDemo/src/graph/tinyEWG.txt";
+        int V = 16;
         long start = System.currentTimeMillis();
         SparseWeightedGraph<Double> g = new SparseWeightedGraph<>(V, true);
         ReadWeightedGraph readGraph = new ReadWeightedGraph(g, fileName);

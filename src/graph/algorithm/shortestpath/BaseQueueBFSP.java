@@ -44,17 +44,16 @@ public class BaseQueueBFSP<Weight extends Number & Comparable> {
         distTo[s] = 0.0;
         while (!queue.isEmpty() && !hasNegativeCycle) {
             int v = queue.poll();
-            isOnQueue[v] = true;
             for (Object item : G.adj(v)) {
                 Edge<Weight> edge = (Edge<Weight>) item;
                 int w = edge.other(v);
                 if (distTo[w].doubleValue() > distTo[v].doubleValue() + edge.wt().doubleValue()) {
                     distTo[w] = distTo[v].doubleValue() + edge.wt().doubleValue();
                     from[edge.w()] = edge;
-                }
-                if (!isOnQueue[w]) {
-                    queue.add(w);
-                    isOnQueue[w] = true;
+                    if (!isOnQueue[w]) {
+                        queue.add(w);
+                        isOnQueue[w] = true;
+                    }
                 }
             }
         }
