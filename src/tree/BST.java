@@ -93,6 +93,26 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    public void inOrderNR() {
+        Stack<Node> stack = new Stack<>();
+        Node temp = root;
+        while (!stack.isEmpty() || temp != null) {
+            while (temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+            }
+            if (!stack.isEmpty()) {
+                Node node = stack.pop();
+                System.out.println(node.e);
+                temp = node.right;
+            }
+        }
+    }
+
+    public void postOrderNR() {
+
+    }
+
     // 中序遍历
     public void inOrder() {
         inOrder(root);
@@ -274,4 +294,28 @@ public class BST<E extends Comparable<E>> {
         }
         return builder.toString();
     }
+
+    public static void main(String[] args) {
+        BST<Integer> bst = new BST<>();
+        bst.add(1);
+        bst.add(2);
+        bst.add(3);
+        bst.add(4);
+        bst.add(5);
+        bst.levelOrder();
+        System.out.println("------------------------------------");
+        bst.preOrderNR();
+        System.out.println("------------------------------------");
+        bst.inOrderNR();
+        System.out.println("------------------------------------");
+        bst.postOrder();
+    }
+
+    /**
+     *           1
+     *             2
+     *               3
+     *                 4
+     *                   5
+     */
 }
