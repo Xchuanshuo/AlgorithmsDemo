@@ -15,5 +15,9 @@ public class Test1181 {
         if (root == null) return 0;
         return 1 + Math.max(helper(root.left), helper(root.right));
     }
+
+    public static void main(String[] args) {
+        System.out.println(Math.round(188.0/100.0));
+    }
     
 }
