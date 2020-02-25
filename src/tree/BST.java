@@ -1,8 +1,6 @@
 package tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author Legend
@@ -87,6 +85,7 @@ public class BST<E extends Comparable<E>> {
             if (node.right != null) {
                 stack.push(node.right);
             }
+            
             if (node.left != null) {
                 stack.push(node.left);
             }

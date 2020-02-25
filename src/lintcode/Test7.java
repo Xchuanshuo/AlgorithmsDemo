@@ -46,7 +46,7 @@ public class Test7 {
         list.add(root);
         boolean isLeftChild = true;
         int level = 0;
-        for (int i=0;i<strings.length;i++) {
+        for (int i=0;i < strings.length;i++) {
             if (!strings[i].equals("#")) {
                 TreeNode node = new TreeNode(Integer.parseInt(strings[i]));
                 if (isLeftChild) {
