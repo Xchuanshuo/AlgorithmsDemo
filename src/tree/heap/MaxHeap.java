@@ -83,7 +83,6 @@ public class MaxHeap<E extends Comparable> {
     }
 
     private void shiftDown(int k) {
-
         while (leftChild(k)<data.getSize()) {
             int j = leftChild(k);
             if (j+1<data.getSize() && data.get(j).compareTo(data.get(j+1))<0) {

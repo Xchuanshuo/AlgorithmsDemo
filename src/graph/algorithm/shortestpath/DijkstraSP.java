@@ -4,6 +4,8 @@ import graph.base.Edge;
 import graph.base.IndexMinHeap;
 import graph.base.WeightGraph;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Stack;
 import java.util.Vector;
 
@@ -52,7 +54,6 @@ public class DijkstraSP<Weight extends Number & Comparable> {
 
             // distTo[v]就是s到v的最短距离
             marked[v] = true;
-
             // 对v的所有相邻节点进行更新
             for (Object item : G.adj(v)) {
                 Edge<Weight> e = (Edge<Weight>) item;

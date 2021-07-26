@@ -1,5 +1,4 @@
 package lintcode;
-import jdk.nashorn.api.tree.ForOfLoopTree;
 
 import java.util.LinkedList;
 import java.util.Queue;

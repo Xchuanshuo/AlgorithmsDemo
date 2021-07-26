@@ -1,4 +1,17 @@
 .idea/
 out/
+src/bytedance
+src/du
+src/jd
+src/meituan
+src/mt
+src/netbase
+src/newcode2
+src/newcode3
+src/proxy
+src/tencent404
+src/tree
+src/tme
+src/wy
 largeEWG.txt
 # gitignore

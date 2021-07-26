@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BST<K extends Comparable<K>, V> {
 
-    private class Node{
+    private class Node {
         public K key;
         public V value;
         public Node left, right;

@@ -12,7 +12,7 @@ package lintcode;
  *      k层了 就往上面遍历 此时就是去用i个鸡蛋j-k层楼去取 因为这里是取最
  *      最坏情况下 所以上面这两种情况取之前测试过的最大值 然后与当前约束下
  *      已经测试过的最坏情况的相比较取最小值 得出状态转移方程
- *      dp[i][j]=min(dp[i][j], max(dp[i-1][k-1], dp[i][j-k]))
+ *      dp[i][j]=min(dp[i][j], max(dp[i-1][k-1], dp[i][j-k]) + 1)
  */
 public class Test584 {
 

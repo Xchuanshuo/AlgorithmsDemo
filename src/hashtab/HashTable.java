@@ -1,5 +1,6 @@
 package hashtab;
 
+import java.util.HashMap;
 import java.util.TreeMap;
 
 /**

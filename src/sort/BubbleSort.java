@@ -1,7 +1,5 @@
 package sort;
 
-import java.util.List;
-
 /**
  * @author Legend
  * @data by on 20-2-20.

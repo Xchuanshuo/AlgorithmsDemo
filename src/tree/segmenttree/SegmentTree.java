@@ -1,5 +1,12 @@
 package tree.segmenttree;
 
+import tree.heap.Array;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Legend
  * @data by on 18-6-21.
@@ -99,7 +106,6 @@ public class SegmentTree<E> {
             tree[treeIndex] = e;
             return;
         }
-
         int mid = l+(r-l)/2;
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
