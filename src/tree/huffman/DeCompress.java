@@ -1,13 +1,13 @@
 package tree.huffman;
 
 import com.alibaba.fastjson.JSON;
-import tree.heap.Array;
 
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import static tree.huffman.ByteUtil.FILE_NAME_SIZE;
 import static tree.huffman.ByteUtil.TREE_CODE_START_INDEX;
