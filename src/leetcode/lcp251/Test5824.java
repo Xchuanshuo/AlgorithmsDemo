@@ -1,4 +1,4 @@
-package leetcode.lcp252;
+package leetcode.lcp251;
 
 /**
  * @author Legend
