@@ -109,8 +109,31 @@ public class BST<E extends Comparable<E>> {
     }
 
     public void postOrderNR() {
-
+        Stack<Node> stack = new Stack<>();
+        Node t = root, visited = null;
+        pushLeft(stack, t);
+        while (!stack.isEmpty()) {
+            Node p = stack.peek();
+            if ((p.left == null || p.left == visited) && p.right != visited) {
+                // 中序遍历 左边访问过 右边没访问
+                pushLeft(stack, p.right);
+            }
+            if (p.right == null || p.right == visited) {
+                // 后序遍历 左右两边都访问过
+                System.out.println(p.e);
+                visited = stack.pop();
+            }
+        }
     }
+
+    private void pushLeft(Stack<Node> stack, Node p) {
+        while (p != null) {
+            // 先序遍历 左右两边还未访问
+            stack.push(p);
+            p = p.left;
+        }
+    }
+
 
     // 中序遍历
     public void inOrder() {
