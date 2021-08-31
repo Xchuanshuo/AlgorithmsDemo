@@ -1,12 +1,5 @@
 package tree.segmenttree;
 
-import tree.heap.Array;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * @author Legend
  * @data by on 18-6-21.
