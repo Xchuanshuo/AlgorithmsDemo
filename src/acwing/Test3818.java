@@ -1,6 +1,7 @@
 package acwing;
 
 import java.util.Scanner;
+import java.util.concurrent.Callable;
 
 /**
  * @author Legend
